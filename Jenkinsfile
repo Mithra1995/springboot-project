@@ -2,7 +2,7 @@
 node {
   
   def image
-  def mvnHome = tool 'Maven3'
+  def mvnHome = tool 'maven2'
 
   
      stage ('checkout') {
@@ -23,7 +23,7 @@ node {
         withDockerServer([uri: "tcp://localhost:4243"]) {
 
             withDockerRegistry([credentialsId: "fa32f95a-2d3e-4c7b-8f34-11bcc0191d70", url: "https://index.docker.io/v1/"]) {
-            image = docker.build("ananthkannan/mywebapp", "MyAwesomeApp")
+            image = docker.build("mithrabalu/india", "MyAwesomeApp")
             image.push()
             
             }
